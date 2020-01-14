@@ -1,41 +1,24 @@
 import { todoReducer, initialState } from './todoReducer';
+import { addTodo, removeTodo, toggleTodo } from '../actions';
 
 test('should add todo successfully', () => {
-  const action = {
-    type: 'ADD_TODO',
-    payload: { text: 'Meet friend for lunch' },
-  };
+  const newTodo = { text: 'Meet friend for lunch' };
+  const newState = todoReducer(initialState, addTodo(newTodo));
 
-  const newState = todoReducer(initialState, action);
-
-  const finalState = {
-    idCounter: 2,
-    todos: [
-      { id: 1, text: 'Build really cool todo app', completed: false },
-      { id: 2, text: 'Meet friend for lunch', completed: false },
-    ],
-  };
-
-  expect(newState).toEqual(finalState);
+  expect(newState.length).toEqual(2);
+  expect(newState[1].text).toEqual(newTodo.text);
 });
 
 test('should remove todo successfully', () => {
-  const action = { type: 'REMOVE_TODO', payload: { id: 1 } };
-  const newState = todoReducer(initialState, action);
-  const finalState = { idCounter: 1, todos: [] };
+  const newState = todoReducer(initialState, removeTodo(initialState[0].id));
+  const finalState = [];
 
+  expect(newState.length).toEqual(0);
   expect(newState).toEqual(finalState);
 });
 
 test('should complete todo successfully', () => {
-  const action = { type: 'TOGGLE_TODO', payload: { id: 1 } };
+  const newState = todoReducer(initialState, toggleTodo(initialState[0].id));
 
-  const newState = todoReducer(initialState, action);
-
-  const finalState = {
-    idCounter: 1,
-    todos: [{ id: 1, text: 'Build really cool todo app', completed: true }],
-  };
-
-  expect(newState).toEqual(finalState);
+  expect(newState[0].completed).toEqual(true);
 });

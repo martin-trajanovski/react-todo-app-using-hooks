@@ -5,37 +5,6 @@ exports[`should render todos correctly 1`] = `
   className="todo-list"
 >
   <div
-    className="add-todo"
-  >
-    <form
-      onSubmit={[Function]}
-    >
-      <div
-        className="input-group mb-3"
-      >
-        <input
-          aria-describedby="basic-addon2"
-          aria-label="Add todo"
-          className="form-control"
-          onChange={[Function]}
-          placeholder="Add todo"
-          type="text"
-          value=""
-        />
-        <div
-          className="input-group-append"
-        >
-          <button
-            className="btn btn-outline-primary"
-            type="submit"
-          >
-            Add todo
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div
     className="todo-item"
   >
     <div

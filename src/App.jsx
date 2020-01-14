@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
-import TodoList from './components/TodoList/TodoList';
+import AddTodo from './components/AddTodo';
+import TodoList from './components/TodoList';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <div className="row">
           <div className="col-md-6 offset-md-3">
             <h4>Todo app with hooks</h4>
+            <AddTodo />
             <TodoList />
           </div>
         </div>

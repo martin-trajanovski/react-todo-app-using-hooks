@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+
+  .alert {
+    margin-bottom: 8px;
+
+    &.alert-success {
+      text-decoration: line-through;
+    }
+
+    .todo-item-text {
+      cursor: pointer;
+    }
+  }
+}

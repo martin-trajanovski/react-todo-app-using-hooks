@@ -1,4 +1,5 @@
 import { ID } from '../helpers/idGenerator';
+import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../actions/constants';
 
 export const initialState = [
   { id: '_deihtwi9q', text: 'Build really cool todo app', completed: false },
@@ -6,7 +7,7 @@ export const initialState = [
 
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_TODO': {
+    case ADD_TODO: {
       const newTodo = {
         id: ID(),
         text: action.todo.text,
@@ -15,7 +16,7 @@ export const todoReducer = (state = initialState, action) => {
 
       return [...state, newTodo];
     }
-    case 'REMOVE_TODO': {
+    case REMOVE_TODO: {
       const removeIndex = state.findIndex(todo => todo.id === action.id);
 
       const newTodos = [...state];
@@ -24,7 +25,7 @@ export const todoReducer = (state = initialState, action) => {
       return newTodos;
     }
 
-    case 'TOGGLE_TODO': {
+    case TOGGLE_TODO: {
       const toggleIndex = state.findIndex(todo => todo.id === action.id);
 
       const newTodos = [...state];

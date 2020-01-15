@@ -1,49 +1,37 @@
-export const initialState = {
-  idCounter: 1,
-  todos: [{ id: 1, text: 'Build really cool todo app', completed: false }],
-};
+import { ID } from '../helpers/idGenerator';
+import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../actions/constants';
 
-export const todoReducer = (state, action) => {
+export const initialState = [
+  { id: '_deihtwi9q', text: 'Build really cool todo app', completed: false },
+];
+
+export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_TODO': {
-      const newCounter = state.idCounter + 1;
+    case ADD_TODO: {
       const newTodo = {
-        id: newCounter,
-        text: action.payload.text,
+        id: ID(),
+        text: action.todo.text,
         completed: false,
       };
 
-      return {
-        idCounter: newCounter,
-        todos: [...state.todos, newTodo],
-      };
+      return [...state, newTodo];
     }
-    case 'REMOVE_TODO': {
-      const removeIndex = state.todos.findIndex(
-        todo => todo.id === action.payload.id
-      );
+    case REMOVE_TODO: {
+      const removeIndex = state.findIndex(todo => todo.id === action.id);
 
-      const newTodos = [...state.todos];
+      const newTodos = [...state];
       newTodos.splice(removeIndex, 1);
 
-      return {
-        ...state,
-        todos: newTodos,
-      };
+      return newTodos;
     }
 
-    case 'TOGGLE_TODO': {
-      const toggleIndex = state.todos.findIndex(
-        todo => todo.id === action.payload.id
-      );
+    case TOGGLE_TODO: {
+      const toggleIndex = state.findIndex(todo => todo.id === action.id);
 
-      const newTodos = [...state.todos];
+      const newTodos = [...state];
       newTodos[toggleIndex].completed = !newTodos[toggleIndex].completed;
 
-      return {
-        ...state,
-        todos: newTodos,
-      };
+      return newTodos;
     }
     default:
       return state;

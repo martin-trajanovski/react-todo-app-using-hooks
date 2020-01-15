@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../../actions';
 
-function AddTodo({ addTodo }) {
+function AddTodo() {
   const [value, setValue] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -12,7 +14,7 @@ function AddTodo({ addTodo }) {
       completed: false,
     };
 
-    addTodo(newTodo);
+    dispatch(addTodo(newTodo));
 
     setValue('');
   };
@@ -40,9 +42,5 @@ function AddTodo({ addTodo }) {
     </div>
   );
 }
-
-AddTodo.propTypes = {
-  addTodo: PropTypes.func.isRequired,
-};
 
 export default AddTodo;

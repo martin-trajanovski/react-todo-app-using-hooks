@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import App from './App';
+import { renderWithRedux } from './setupTests';
 
 test('renders app component correctly', () => {
-  const { getByText } = render(<App />);
+  const { getByText } = renderWithRedux(<App />);
   const titleElement = getByText(/app with hooks/i);
   expect(titleElement).toBeInTheDocument();
 });

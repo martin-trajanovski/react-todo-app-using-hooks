@@ -1,6 +1,6 @@
 import React from 'react';
-import App from './App';
-import { renderWithRedux } from './setupTests';
+import App from '.';
+import { renderWithRedux } from '../../config/setupTests';
 
 test('renders app component correctly', () => {
   const { getByText } = renderWithRedux(<App />);

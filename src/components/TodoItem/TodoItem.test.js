@@ -1,7 +1,7 @@
 import React from 'react';
-import TodoItem from '.';
-import { renderWithRedux } from '../../setupTests';
 import { fireEvent } from '@testing-library/react';
+import TodoItem from '.';
+import { renderWithRedux } from '../../config/setupTests';
 
 const initialTodosState = {
   todos: [{ id: 'test', text: 'Test todo', completed: false }],

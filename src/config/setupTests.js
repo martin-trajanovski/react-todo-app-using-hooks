@@ -8,7 +8,7 @@ import { render } from '@testing-library/react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import rootReducer from './reducers';
+import rootReducer from '../reducers';
 import registerIcons from './registerIcons';
 
 registerIcons();

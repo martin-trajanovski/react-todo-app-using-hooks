@@ -4,10 +4,10 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 import './index.scss';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import registerIcons from './registerIcons';
+import registerIcons from './config/registerIcons';
 import rootReducer from './reducers';
+import App from './components/App';
+import * as serviceWorker from './config/serviceWorker';
 
 registerIcons();
 

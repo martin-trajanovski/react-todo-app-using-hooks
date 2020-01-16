@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoList from '.';
-import { renderWithRedux } from '../../setupTests';
+import { renderWithRedux } from '../../config/setupTests';
 
 test('should display todos correctly', () => {
   const { container } = renderWithRedux(<TodoList />);

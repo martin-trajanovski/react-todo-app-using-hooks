@@ -1,11 +1,34 @@
 import React from 'react';
-import { renderWithRedux } from '../../setupTests';
-import AddTodo from '.';
 import { fireEvent } from '@testing-library/react';
+import { renderWithRedux } from '../../config/setupTests';
+import AddTodo from '.';
 
 const initialTodosState = {
   todos: [{ id: 'test', text: 'Test todo', completed: false }],
 };
+
+test('should prevent adding empty todo', () => {
+  const {
+    container,
+    getByPlaceholderText,
+    getByText,
+    store: { getState },
+  } = renderWithRedux(<AddTodo />, { initialState: initialTodosState });
+
+  const form = container.querySelector('form');
+  const button = getByText('Add todo');
+  const input = getByPlaceholderText('Add todo');
+  expect(button).toHaveAttribute('disabled');
+  expect(input).toHaveAttribute('required');
+
+  fireEvent.submit(form);
+  fireEvent.click(button);
+
+  expect(form).toBeInvalid();
+
+  const { todos } = getState();
+  expect(todos.length).toBe(1);
+});
 
 test('should create todo successfully on form submit', async () => {
   const {

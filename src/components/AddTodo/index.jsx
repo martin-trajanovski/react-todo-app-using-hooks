@@ -9,6 +9,10 @@ function AddTodo() {
   const handleSubmit = e => {
     e.preventDefault();
 
+    if (!value) {
+      return;
+    }
+
     const newTodo = {
       text: value,
       completed: false,
@@ -31,9 +35,14 @@ function AddTodo() {
             aria-describedby="basic-addon2"
             value={value}
             onChange={e => setValue(e.target.value)}
+            required
           />
           <div className="input-group-append">
-            <button type="submit" className="btn btn-outline-primary">
+            <button
+              type="submit"
+              className="btn btn-outline-primary"
+              disabled={!value}
+            >
               Add todo
             </button>
           </div>
